@@ -15,7 +15,7 @@ steps:
     testRunTitle: 'SpringLabTest'
     mavenOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
+    jdkVersionOption: '1.11'
     jdkArchitectureOption: 'x64'
 - task: PublishBuildArtifacts@1
   displayName: 'PublishBuildArtifacts'
