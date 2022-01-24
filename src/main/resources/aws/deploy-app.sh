@@ -6,14 +6,16 @@ containerName=config-server-ctr
 portNumber=8888
 hostPath=/home/ubuntu/config-files
 containerPath=/home/config_usr/application/config-files
-zipFileName=app-files.zip
+jarFileName=config-server-0.0.1-SNAPSHOT.jar
 
 removeContainer(){
 	docker rm --force $containerName
 }
 
 unzipFiles(){
-	tar xvf $zipFileName
+	unzip  -uo -d content_jar $jarFileName
+	cp content_jar/BOOT-INF/classes/Dockerfile .
+	cp content_jar/BOOT-INF/classes/aws/deploy-app.sh .
 }
 
 createImage(){
