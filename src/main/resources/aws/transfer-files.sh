@@ -8,7 +8,7 @@ dirName=app-files
 zipFile=$dirName.zip
 
 transferCommpressedFile(){
-	scp -i $(private_key.secureFilePath) $zipFile $userName@$ipAddress:~/deployment/
+	scp -i $AWS_PRIVATE_FILE_NAME $zipFile $userName@$ipAddress:~/deployment/
 }
 getIpAddress(){
 	
