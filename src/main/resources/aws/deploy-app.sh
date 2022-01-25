@@ -18,6 +18,7 @@ createImage(){
 
 runContainer(){
 docker run \
+	-d \
 	-e SPRING_SECURITY_USER_NAME="$(SPRING_SECURITY_USER_NAME)" \
 	-e SPRING_SECURITY_USER_PASSWORD="$(SPRING_SECURITY_USER_PASSWORD)" \
 	-e SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCHLOCATIONS="file:"$containerPath"/{label}" \
