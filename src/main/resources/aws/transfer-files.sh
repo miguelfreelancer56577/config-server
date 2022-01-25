@@ -6,9 +6,13 @@ ipAddress=""
 userName=ubuntu
 dirName=app-files
 zipFile=$dirName.zip
+deploymentFileName="./deploy-app.sh"
 
 transferCommpressedFile(){
-	scp -i $AWS_PRIVATE_FILE_NAME $zipFile $userName@$ipAddress:~/deployment/
+	scp -i $(private_key.secureFilePath) -o StrictHostKeyChecking=no  $zipFile $userName@$ipAddress:~/deployment/
+}
+deployApp(){
+	ssh -i $(private_key.secureFilePath) -o StrictHostKeyChecking=no $userName@$ipAddress "tar xvf ~/deployment/$zipFile; chmod +x $deploymentFileName; $deploymentFileName" 
 }
 getIpAddress(){
 	
@@ -30,6 +34,8 @@ main(){
 	getIpAddress
 	echo "######################### Transfering zip file #########################"
 	transferCommpressedFile
+	echo "######################### Deploy app #########################"
+	deployApp
 }
 
 #calling main function
