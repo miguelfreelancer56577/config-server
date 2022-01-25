@@ -12,12 +12,6 @@ removeContainer(){
 	docker rm --force $containerName
 }
 
-unzipFiles(){
-	unzip  -uo -d content_jar $jarFileName
-	cp content_jar/BOOT-INF/classes/Dockerfile .
-	cp content_jar/BOOT-INF/classes/aws/deploy-app.sh .
-}
-
 createImage(){
 	docker build -t $imageName .
 }
@@ -36,8 +30,6 @@ main(){
 
 	echo "######################### Removing container #########################"
 	removeContainer
-	echo "######################### Unziping files #########################"
-	unzipFiles
 	echo "######################### Creating Image #########################"
 	createImage
 	echo "######################### Runing Container #########################"
