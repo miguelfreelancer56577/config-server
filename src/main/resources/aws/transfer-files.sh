@@ -9,10 +9,10 @@ zipFile=$dirName.zip
 deploymentFileName="./deploy-app.sh"
 
 transferCommpressedFile(){
-	scp -i $(private_key.secureFilePath) -o StrictHostKeyChecking=no  $zipFile $userName@$ipAddress:~/deployment/
+	scp -i $AWS_PRIVATE_FILE_NAME -o StrictHostKeyChecking=no  $zipFile $userName@$ipAddress:~/deployment/
 }
 deployApp(){
-	ssh -i $(private_key.secureFilePath) -o StrictHostKeyChecking=no $userName@$ipAddress "tar xvf ~/deployment/$zipFile; chmod +x $deploymentFileName; $deploymentFileName" 
+	ssh -i $AWS_PRIVATE_FILE_NAME -o StrictHostKeyChecking=no $userName@$ipAddress "tar xvf ~/deployment/$zipFile; chmod +x $deploymentFileName; $deploymentFileName" 
 }
 getIpAddress(){
 	
