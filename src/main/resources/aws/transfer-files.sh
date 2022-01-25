@@ -34,7 +34,7 @@ main(){
 	getIpAddress
 	echo "######################### Transfering zip file #########################"
 	transferCommpressedFile
-	echo "######################### Deploy app #########################"
+	echo "######################### Deploying app #########################"
 	deployApp
 }
 
